@@ -133,6 +133,34 @@ void diferencaFila(TFila *fila1, TFila *fila2, TFila *fila3)
     }
 }
 
+// Atividade 5
+void inverterElementos(TFila *fila, int k)
+{
+    TPilha pilha;
+    TProduto item;
+
+    FPVazia(&pilha);
+
+    for (int i = 0; i < k; i++)
+    {
+        Desenfileirar(fila, &item);
+        PEmpilhar(item, &pilha);
+    }
+
+    for (int i = 0; i < k; i++)
+    {
+        PDesempilhar(&pilha, &item);
+        Enfileirar(item, fila);
+    }
+
+    int resto = fila->tamanho - k;
+    for (int i = 0; i < resto; i++)
+    {
+        Desenfileirar(fila, &item);
+        Enfileirar(item, fila);
+    }
+}
+
 int main()
 {
 
@@ -167,9 +195,9 @@ int main()
             Enfileirar(make_prod(10), &fila2);
             Enfileirar(make_prod(40), &fila2);
 
-            printf("1: ");
+            printf("Fila 1: ");
             Imprimir(&fila1);
-            printf("2: ");
+            printf("Fila 2: ");
             Imprimir(&fila2);
 
             int igual = verificarFila(&fila1, &fila2);
@@ -197,6 +225,7 @@ int main()
             Enfileirar(make_prod(40), &fila);
             Enfileirar(make_prod(30), &fila);
 
+            printf("Fila: ");
             Imprimir(&fila);
 
             printf("Digite o indice a ser removido: ");
@@ -206,6 +235,7 @@ int main()
 
             removerElemento(&fila, n);
 
+            printf("Fila: ");
             Imprimir(&fila);
 
             Liberar(&fila);
@@ -233,14 +263,14 @@ int main()
             Enfileirar(make_prod(10), &fila2);
             Enfileirar(make_prod(40), &fila2);
 
-            printf("1: ");
+            printf("Fila 1: ");
             Imprimir(&fila1);
-            printf("2: ");
+            printf("Fila 2: ");
             Imprimir(&fila2);
 
             intersecaoFila(&fila1, &fila2, &fila3);
 
-            printf("3: ");
+            printf("Fila 3: ");
             Imprimir(&fila3);
 
             Liberar(&fila1);
@@ -265,19 +295,42 @@ int main()
             Enfileirar(make_prod(10), &fila2);
             Enfileirar(make_prod(40), &fila2);
 
-            printf("1: ");
+            printf("Fila 1: ");
             Imprimir(&fila1);
-            printf("2: ");
+            printf("Fila 2: ");
             Imprimir(&fila2);
 
             diferencaFila(&fila1, &fila2, &fila3);
 
-            printf("3: ");
+            printf("Fila 3: ");
             Imprimir(&fila3);
 
             Liberar(&fila1);
             Liberar(&fila2);
             Liberar(&fila3);
+        }
+        else if (x == 5)
+        {
+            TFila fila;
+            int k = 3;
+
+            FFVazia(&fila);
+
+            Enfileirar(make_prod(10), &fila);
+            Enfileirar(make_prod(20), &fila);
+            Enfileirar(make_prod(30), &fila);
+            Enfileirar(make_prod(40), &fila);
+            Enfileirar(make_prod(50), &fila);
+
+            printf("Fila: ");
+            Imprimir(&fila);
+
+            inverterElementos(&fila, k);
+
+            printf("Fila invertida: ");
+            Imprimir(&fila);
+
+            Liberar(&fila);
         }
     }
 
