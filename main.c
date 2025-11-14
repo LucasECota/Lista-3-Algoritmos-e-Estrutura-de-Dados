@@ -3,7 +3,10 @@
 #include "Fila.c"
 #include "Pilha.c"
 
-// Atividade 1
+/* Atividade 1
+T(n) = 4 + 8n^2
+O(n^2), para n0 = 1 e c = 12
+*/
 int verificarFila(TFila *fila1, TFila *fila2)
 {
     TCelula *aux1 = fila1->frente->prox;
@@ -29,11 +32,13 @@ int verificarFila(TFila *fila1, TFila *fila2)
         }
         aux1 = aux1->prox;
     }
-
     return 1;
 }
 
-// Atividade 2
+/* Atividade 2
+T(n) = 9 + 3n
+O(n), para n0 = 1 e c = 12
+*/
 void removerElemento(TFila *fila, int n)
 {
     if (n <= 0)
@@ -81,10 +86,12 @@ void removerElemento(TFila *fila, int n)
     fila->tamanho--;
 }
 
-// Aticidade 3
+/* Atividade 3
+T(n) = 2 + 4n^2
+O(n^2), para n0 = 1 e c = 6
+*/
 void intersecaoFila(TFila *fila1, TFila *fila2, TFila *fila3)
 {
-
     TCelula *aux1 = fila1->frente->prox;
     TCelula *aux2;
 
@@ -103,10 +110,12 @@ void intersecaoFila(TFila *fila1, TFila *fila2, TFila *fila3)
     }
 }
 
-// Atividade 4
+/* Atividade 4
+T(n) = 2 + 8n^2
+O(n^2), para n0 = 1 e c = 10
+*/
 void diferencaFila(TFila *fila1, TFila *fila2, TFila *fila3)
 {
-
     TCelula *aux1 = fila1->frente->prox;
     TCelula *aux2;
 
@@ -133,7 +142,10 @@ void diferencaFila(TFila *fila1, TFila *fila2, TFila *fila3)
     }
 }
 
-// Atividade 5
+/* Atividade 5
+T(n) = 4 + 6n
+O(n), para n0 = 1 e c = 10
+*/
 void inverterElementos(TFila *fila, int k)
 {
     TPilha pilha;
@@ -163,7 +175,6 @@ void inverterElementos(TFila *fila, int k)
 
 int main()
 {
-
     while (1)
     {
         int x;
@@ -263,6 +274,7 @@ int main()
             Enfileirar(make_prod(10), &fila2);
             Enfileirar(make_prod(40), &fila2);
 
+            printf("Intersecao:\n");
             printf("Fila 1: ");
             Imprimir(&fila1);
             printf("Fila 2: ");
@@ -295,6 +307,7 @@ int main()
             Enfileirar(make_prod(10), &fila2);
             Enfileirar(make_prod(40), &fila2);
 
+            printf("Diferenca:\n");
             printf("Fila 1: ");
             Imprimir(&fila1);
             printf("Fila 2: ");
@@ -327,10 +340,15 @@ int main()
 
             inverterElementos(&fila, k);
 
-            printf("Fila invertida: ");
+            printf("Depois da inversao:\n");
+            printf("Fila: ");
             Imprimir(&fila);
 
             Liberar(&fila);
+        }
+        else
+        {
+            printf("Digite uma opcao valida!\n");
         }
     }
 
